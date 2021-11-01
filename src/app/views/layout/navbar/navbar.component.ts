@@ -1,9 +1,6 @@
-import { Component, OnInit, Inject, Renderer2, HostListener } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Inject, Renderer2 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { Router, NavigationEnd } from '@angular/router';
-
-import { MENU } from './menu';
-import { MenuItem } from './menu.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -12,22 +9,6 @@ import { MenuItem } from './menu.model';
 })
 export class NavbarComponent implements OnInit {
 
-  menuItems = [];
-
-  /**
-  * Fixed header menu on scroll
-  */
-  @HostListener('window:scroll', ['$event']) getScrollHeight(event) {    
-    if (window.matchMedia('(min-width: 992px)').matches) {
-      let header: HTMLElement = document.querySelector('.horizontal-menu') as HTMLElement;
-      if(window.pageYOffset >= 60) {
-        header.parentElement.classList.add('fixed-on-scroll')
-      } else {
-        header.parentElement.classList.remove('fixed-on-scroll')
-      }
-    }
-  }
-
   constructor(
     @Inject(DOCUMENT) private document: Document, 
     private renderer: Renderer2,
@@ -35,26 +16,14 @@ export class NavbarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.menuItems = MENU;
-
-    /**
-    * closing the header menu after route change in tablet/mobile devices
-    */
-    if (window.matchMedia('(max-width: 991px)').matches) {
-      this.router.events.forEach((event) => {
-        if (event instanceof NavigationEnd) {
-          document.querySelector('.horizontal-menu .bottom-navbar').classList.remove('header-toggled');
-        }
-      });
-    }
   }
 
   /**
-   * Returns true or false if given menu item has child or not
-   * @param item menuItem
+   * Sidebar toggle on hamburger button click
    */
-  hasItems(item: MenuItem) {
-    return item.subMenus !== undefined ? item.subMenus.length > 0 : false;
+  toggleSidebar(e) {
+    e.preventDefault();
+    this.document.body.classList.toggle('sidebar-open');
   }
 
   /**
@@ -67,13 +36,6 @@ export class NavbarComponent implements OnInit {
     if (!localStorage.getItem('isLoggedin')) {
       this.router.navigate(['/auth/login']);
     }
-  }
-
-  /**
-   * Toggle header menu in tablet/mobile devices
-   */
-  toggleHeaderMenu() {
-    document.querySelector('.horizontal-menu .bottom-navbar').classList.toggle('header-toggled');
   }
 
 }
