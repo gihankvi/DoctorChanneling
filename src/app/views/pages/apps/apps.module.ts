@@ -24,6 +24,15 @@ import { ComposeComponent } from './email/compose/compose.component';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { AllDoctorComponent } from './doctor/all-doctor/all-doctor.component';
+import { AddDoctorComponent } from './doctor/add-doctor/add-doctor.component';
+import { AllPatientComponent } from './patient/all-patient/all-patient.component';
+import { AddPatientComponent } from './patient/add-patient/add-patient.component';
+import { PatientProfileComponent } from './patient/patient-profile/patient-profile.component';
+import { DoctorScheduleComponent } from './doctor/doctor-schedule/doctor-schedule.component';
+import { PatientInvoiceComponent } from './patient/patient-invoice/patient-invoice.component';
+import { DoctorComponent } from './doctor/doctor.component';
+import { DoctorProfileComponent } from './doctor/doctor-profile/doctor-profile.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -69,6 +78,39 @@ const routes: Routes = [
           }
         ]
       },
+
+      {
+        path: 'doctor',
+        component: DoctorComponent,
+        children: [
+          {
+            path: '',
+            redirectTo: 'allDoctor',
+            pathMatch: 'full'
+          },
+          {
+            path: 'allDoctor',
+            component: AllDoctorComponent
+          },
+          {
+            path: 'addDoctor',
+            component: AddDoctorComponent
+          },
+          {
+            path: 'doctorProfile',
+            component: DoctorProfileComponent
+          },
+          {
+            path: 'doctorSchedule',
+            component: DoctorScheduleComponent
+          }
+        ]
+      },
+
+
+
+
+
       {
         path: 'chat',
         component: ChatComponent
@@ -82,7 +124,7 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  declarations: [EmailComponent, ChatComponent, CalendarComponent, AppsComponent, InboxComponent, ReadComponent, ComposeComponent],
+  declarations: [EmailComponent, ChatComponent, CalendarComponent, AppsComponent, InboxComponent, ReadComponent, ComposeComponent, AllDoctorComponent, AddDoctorComponent,   AllPatientComponent, AddPatientComponent, PatientProfileComponent, DoctorScheduleComponent, PatientInvoiceComponent, DoctorComponent, DoctorProfileComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
