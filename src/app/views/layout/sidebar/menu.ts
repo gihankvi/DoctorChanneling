@@ -17,16 +17,53 @@ export const MENU: MenuItem[] = [
   
   {
     label: 'Doctor',
-    icon: 'mail',
+    icon: '',
     subItems: [
       {
         label: 'All Doctor',
         link: '/apps/doctor/alldoctor',
       },
+      {
+        label: 'Add Doctor',
+        link: '/apps/doctor/adddoctor',
+      },
+      {
+        label: 'Doctor Profile',
+        link: '/apps/doctor/doctorprofile',
+      },
+      {
+        label: 'Doctor Schedule',
+        link: '/apps/doctor/doctorschedule',
+      },
      
-    
     ]
   },
+
+
+  {
+    label: 'Patients',
+    icon: '',
+    subItems: [
+      {
+        label: 'All Patients',
+        link: '/apps/patients/allpatients',
+      },
+      {
+        label: 'Add Patients',
+        link: '/apps/patients/addpatients',
+      },
+      {
+        label: 'Patients Profile',
+        link: '/apps/patients/patientsprofile',
+      },
+      {
+        label: 'Invoice',
+        link: '/apps/patients/invoice',
+      },
+     
+    ]
+  },
+
   {
     label: 'Email',
     icon: 'mail',

@@ -72,6 +72,49 @@ const routes: Routes = [
           {
             path: 'alldoctor',
             component: AllDoctorComponent
+          },
+          {
+            path: 'adddoctor',
+            component: AddDoctorComponent
+          },
+          {
+            path: 'doctorprofile',
+            component: DoctorProfileComponent
+          },
+          {
+            path: 'doctorschedule',
+            component: DoctorScheduleComponent
+          }
+          
+        ]
+      },
+
+
+       
+      {
+        path: 'patients',
+        component: PatientsComponent,
+        children: [
+          {
+            path: '',
+            redirectTo: 'allpatients',
+            pathMatch: 'full'
+          },
+          {
+            path: 'allpatients',
+            component: AllPatientsComponent
+          },
+          {
+            path: 'addpatients',
+            component: AddPatientsComponent
+          },
+          {
+            path: 'patientsprofile',
+            component: ProfilePatientComponent
+          },
+          {
+            path: 'invoice',
+            component: InvoiceComponent
           }
           
         ]
@@ -101,7 +144,6 @@ const routes: Routes = [
         ]
       },
 
-      
      
 
 

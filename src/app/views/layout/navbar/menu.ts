@@ -50,10 +50,38 @@ export const MENU: MenuItem[] = [
           },
           {
             label: 'doctorSchedule',
-            link: '/apps/email/compose'
+            link: '/apps/doctor/doctor-schedule'
           },
         ]
       },
+
+      {
+        subMenuItems: [
+          {
+            label: 'Patients',
+            isTitle: true,
+          },
+          {
+            label: 'allPatients',
+            link: '/apps/patients/all-patients'
+          },
+          {
+            label: 'addPatients',
+            link: '/apps/patients/add-patients'
+          },
+          {
+            label: 'patientsProfile',
+            link: '/apps/patients/profile-patient'
+          },
+          {
+            label: 'invoice',
+            link: '/apps/patients/invoice'
+          },
+        ]
+      },
+
+
+
       {
         subMenuItems: [
           {
