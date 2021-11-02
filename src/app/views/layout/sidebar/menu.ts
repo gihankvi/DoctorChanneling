@@ -14,6 +14,19 @@ export const MENU: MenuItem[] = [
     label: 'Web Apps',
     isTitle: true
   },
+  
+  {
+    label: 'Doctor',
+    icon: 'mail',
+    subItems: [
+      {
+        label: 'All Doctor',
+        link: '/apps/doctor/alldoctor',
+      },
+     
+    
+    ]
+  },
   {
     label: 'Email',
     icon: 'mail',
@@ -32,24 +45,9 @@ export const MENU: MenuItem[] = [
       },
     ]
   },
-  {
-    label: 'Doctor',
-    icon: 'mail',
-    subItems: [
-      {
-        label: 'allDoctor',
-        link: '/apps/doctor/all-doctor',
-      },
-      {
-        label: 'Read',
-        link: '/apps/email/read'
-      },
-      {
-        label: 'Compose',
-        link: '/apps/email/compose'
-      },
-    ]
-  },
+
+
+
   {
     label: 'Chat',
     icon: 'message-square',

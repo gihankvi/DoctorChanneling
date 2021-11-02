@@ -24,15 +24,19 @@ import { ComposeComponent } from './email/compose/compose.component';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+
+import { DoctorComponent } from './doctor/doctor.component';
 import { AllDoctorComponent } from './doctor/all-doctor/all-doctor.component';
 import { AddDoctorComponent } from './doctor/add-doctor/add-doctor.component';
-import { AllPatientComponent } from './patient/all-patient/all-patient.component';
-import { AddPatientComponent } from './patient/add-patient/add-patient.component';
-import { PatientProfileComponent } from './patient/patient-profile/patient-profile.component';
-import { DoctorScheduleComponent } from './doctor/doctor-schedule/doctor-schedule.component';
-import { PatientInvoiceComponent } from './patient/patient-invoice/patient-invoice.component';
-import { DoctorComponent } from './doctor/doctor.component';
 import { DoctorProfileComponent } from './doctor/doctor-profile/doctor-profile.component';
+import { DoctorScheduleComponent } from './doctor/doctor-schedule/doctor-schedule.component';
+import { PatientsComponent } from './patients/patients.component';
+import { AllPatientsComponent } from './patients/all-patients/all-patients.component';
+import { AddPatientsComponent } from './patients/add-patients/add-patients.component';
+import { ProfilePatientComponent } from './patients/profile-patient/profile-patient.component';
+import { InvoiceComponent } from './patients/invoice/invoice.component';
+
+
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -55,6 +59,24 @@ const routes: Routes = [
         redirectTo: 'calendar',
         pathMatch: 'full',
       },
+
+      {
+        path: 'doctor',
+        component: DoctorComponent,
+        children: [
+          {
+            path: '',
+            redirectTo: 'alldoctor',
+            pathMatch: 'full'
+          },
+          {
+            path: 'alldoctor',
+            component: AllDoctorComponent
+          }
+          
+        ]
+      },
+
       {
         path: 'email',
         component: EmailComponent,
@@ -80,34 +102,7 @@ const routes: Routes = [
       },
 
       
-      {
-        path: 'doctor',
-        component: DoctorComponent,
-        children: [
-          {
-            path: '',
-            redirectTo: 'allDoctor',
-            pathMatch: 'full'
-          },
-          {
-            path: 'allDoctor',
-            component: AllDoctorComponent
-          },
-          {
-            path: 'addDoctor',
-            component: AddDoctorComponent
-          },
-          {
-            path: 'doctorProfile',
-            component: DoctorProfileComponent
-          },
-          {
-            path: 'doctorSchedule',
-            component: DoctorScheduleComponent
-          }
-        ]
-      },
-
+     
 
 
 
@@ -125,7 +120,7 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  declarations: [EmailComponent, ChatComponent, CalendarComponent, AppsComponent, InboxComponent, ReadComponent, ComposeComponent, AllDoctorComponent, AddDoctorComponent,   AllPatientComponent, AddPatientComponent, PatientProfileComponent, DoctorScheduleComponent, PatientInvoiceComponent, DoctorComponent, DoctorProfileComponent],
+  declarations: [EmailComponent, ChatComponent, CalendarComponent, AppsComponent, InboxComponent, ReadComponent, ComposeComponent,   AllDoctorComponent ,DoctorComponent, AddDoctorComponent, DoctorProfileComponent, DoctorScheduleComponent, PatientsComponent, AllPatientsComponent, AddPatientsComponent, ProfilePatientComponent, InvoiceComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
