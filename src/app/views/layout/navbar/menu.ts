@@ -33,6 +33,30 @@ export const MENU: MenuItem[] = [
       {
         subMenuItems: [
           {
+            label: 'Doctor',
+            isTitle: true,
+          },
+          {
+            label: 'allDoctor',
+            link: '/apps/doctor/all-doctor'
+          },
+          {
+            label: 'addDoctor',
+            link: '/apps/doctor/add-doctor'
+          },
+          {
+            label: 'doctorProfile',
+            link: '/apps/doctor/doctor-profile'
+          },
+          {
+            label: 'doctorSchedule',
+            link: '/apps/email/compose'
+          },
+        ]
+      },
+      {
+        subMenuItems: [
+          {
             label: 'Other',
             isTitle: true,
           },

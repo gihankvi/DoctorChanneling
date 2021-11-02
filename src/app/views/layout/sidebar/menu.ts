@@ -33,6 +33,24 @@ export const MENU: MenuItem[] = [
     ]
   },
   {
+    label: 'Doctor',
+    icon: 'mail',
+    subItems: [
+      {
+        label: 'allDoctor',
+        link: '/apps/doctor/all-doctor',
+      },
+      {
+        label: 'Read',
+        link: '/apps/email/read'
+      },
+      {
+        label: 'Compose',
+        link: '/apps/email/compose'
+      },
+    ]
+  },
+  {
     label: 'Chat',
     icon: 'message-square',
     link: '/apps/chat',
