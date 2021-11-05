@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-add-patients',
   templateUrl: './add-patients.component.html',
@@ -11,5 +11,5 @@ export class AddPatientsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  selectedDate: NgbDateStruct;
 }
