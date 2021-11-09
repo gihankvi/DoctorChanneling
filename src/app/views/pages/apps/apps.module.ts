@@ -36,7 +36,8 @@ import { AllPatientsComponent } from './patients/all-patients/all-patients.compo
 import { AddPatientsComponent } from './patients/add-patients/add-patients.component';
 import { ProfilePatientComponent } from './patients/profile-patient/profile-patient.component';
 import { InvoiceComponent } from './patients/invoice/invoice.component';
-import { ApiService } from './patients/service/api.service';
+import { PatientService } from './patients/service/patient.service';
+
 
 
 
@@ -183,9 +184,9 @@ const routes: Routes = [
       useValue: {}
     })
   ],
-  providers: [ApiService,
+  providers: [PatientService,
     {
-      provide: PERFECT_SCROLLBAR_CONFIG,
+      provide: PERFECT_SCROLLBAR_CONFIG, 
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
 
     }
