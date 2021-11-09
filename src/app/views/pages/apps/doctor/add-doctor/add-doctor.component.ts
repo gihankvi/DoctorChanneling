@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators,FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Doctor } from '../model-doctor/doctor.model';
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { DoctorService } from '../service-doctor/doctor.service';
 
 @Component({
   selector: 'app-add-doctor',
@@ -7,9 +12,49 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddDoctorComponent implements OnInit {
 
-  constructor() { }
+  submitted = false;
+  doctorForm: FormGroup;
+
+  constructor(
+    public fb: FormBuilder,
+    private router: Router,
+    private ngZone: NgZone,
+    private doctorService: DoctorService
+  ) { 
+
+    this.mainForm();
+  }
 
   ngOnInit(): void {
+  }
+
+  mainForm() {
+    this.doctorForm = this.fb.group({
+
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+    })
+  }
+
+  selectedDate: NgbDateStruct;
+
+  createDoctor() {
+    this.submitted = true;
+    if (!this.doctorForm.valid) {
+      return false;
+    } else {
+      this.doctorService.createDoctor(this.doctorForm.value).subscribe(
+        (res) => {
+          console.log('Doctor successfully created!')
+          this.ngZone.run(() => this.router.navigateByUrl('/'))
+        }, (error) => {
+          console.log(error);
+        });
+    }
+    this.doctorForm.reset({
+      firstName: '',
+      lastName: ''
+    })
   }
 
   openFileBrowser(event: any) {

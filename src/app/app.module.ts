@@ -12,8 +12,15 @@ import { ErrorPageComponent } from './views/pages/error-page/error-page.componen
 
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { HttpClientModule } from '@angular/common/http';
 import { PatientService } from './views/pages/apps/patients/service/patient.service';
+import { DoctorService } from './views/pages/apps/doctor/service-doctor/doctor.service';
+
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -27,10 +34,15 @@ import { PatientService } from './views/pages/apps/patients/service/patient.serv
     LayoutModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+
   ],
   providers: [
-    AuthGuard,PatientService,
+
+   
+
+    AuthGuard,PatientService,DoctorService,
+
     {
       provide: HIGHLIGHT_OPTIONS, // https://www.npmjs.com/package/ngx-highlightjs
       useValue: {
