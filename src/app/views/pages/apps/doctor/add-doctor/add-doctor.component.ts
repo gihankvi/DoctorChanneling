@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, NgZone, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators,FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Doctor } from '../model-doctor/doctor.model';
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { DoctorService } from '../service-doctor/doctor.service';
 
 @Component({
@@ -11,34 +12,49 @@ import { DoctorService } from '../service-doctor/doctor.service';
 })
 export class AddDoctorComponent implements OnInit {
 
-  doctors: Doctor[] | any;
-  
-  constructor(private doctorService: DoctorService,
-              private doctorRouter: Router ) { }
+  submitted = false;
+  doctorForm: FormGroup;
 
-              doctorForm = new FormGroup({
-                firstName: new FormControl(
-                  '',[Validators.required]
-                ),
-                lastName: new FormControl(
-                  '',[Validators.required]
-                )
-    });
-  
-    createDoctor(){
-      this.doctorService.addDoctor(this.doctorForm.value).subscribe(()=>{
-  
-      }, (err) => {
-        console.log(err);
-      });
-  
-      this.doctorForm.reset({
-        firstName: '',
-        lastName: ''
-      })
-    }
-    
+  constructor(
+    public fb: FormBuilder,
+    private router: Router,
+    private ngZone: NgZone,
+    private doctorService: DoctorService
+  ) { 
+
+    this.mainForm();
+  }
+
   ngOnInit(): void {
+  }
+
+  mainForm() {
+    this.doctorForm = this.fb.group({
+
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+    })
+  }
+
+  selectedDate: NgbDateStruct;
+
+  createDoctor() {
+    this.submitted = true;
+    if (!this.doctorForm.valid) {
+      return false;
+    } else {
+      this.doctorService.createDoctor(this.doctorForm.value).subscribe(
+        (res) => {
+          console.log('Doctor successfully created!')
+          this.ngZone.run(() => this.router.navigateByUrl('/'))
+        }, (error) => {
+          console.log(error);
+        });
+    }
+    this.doctorForm.reset({
+      firstName: '',
+      lastName: ''
+    })
   }
 
   openFileBrowser(event: any) {

@@ -14,6 +14,7 @@ import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ApiService } from './views/pages/apps/patients/service/api.service';
+import { DoctorService } from './views/pages/apps/doctor/service-doctor/doctor.service';
 
 @NgModule({
   declarations: [
@@ -27,10 +28,11 @@ import { ApiService } from './views/pages/apps/patients/service/api.service';
     LayoutModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+
   ],
   providers: [
-    AuthGuard,ApiService,
+    AuthGuard,ApiService,DoctorService,
     {
       provide: HIGHLIGHT_OPTIONS, // https://www.npmjs.com/package/ngx-highlightjs
       useValue: {

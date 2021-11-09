@@ -1,24 +1,38 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Doctor } from '../model-doctor/doctor.model';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DoctorService {
-  url = 'http://localhost:4000/api/doctor/';
-  
+  baseUri:string = 'http://localhost:4000/api/doctor';
+  headers = new HttpHeaders().set('Content-Type', 'application/json');
+
   constructor(private http: HttpClient) { }
-  
-  addDoctor(doctor: Doctor){
-    return this.http.post(this.url, doctor);
+
+  // Create
+  createDoctor(data): Observable<any> {
+    let url = `${this.baseUri}/create`;
+    return this.http.post(url, data)
+      .pipe(
+        catchError(this.errorMgmt)
+      )
   }
 
-  getDoctor(id: Doctor){
-    return this.http.get(`${this.url}/${id}`)
-  }
-
-  getDoctors(){
-    return this.http.get(this.url);
+  // Error handling 
+  errorMgmt(error: HttpErrorResponse) {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // Get client-side error
+      errorMessage = error.error.message;
+    } else {
+      // Get server-side error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    console.log(errorMessage);
+    return throwError(errorMessage);
   }
 }
