@@ -33,6 +33,13 @@ export class AddDoctorComponent implements OnInit {
 
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
+      dob: ['', [Validators.required]],
+      gender: ['', [Validators.required]],
+      speciality: ['', [Validators.required]],
+      phone:['', [Validators.required]],
+      email:['', [Validators.required]],
+      webUrl:['', [Validators.required]],
+      need:['', [Validators.required]],
     })
   }
 
@@ -53,7 +60,14 @@ export class AddDoctorComponent implements OnInit {
     }
     this.doctorForm.reset({
       firstName: '',
-      lastName: ''
+      lastName: '',
+      dob: '',
+      gender: '',
+      speciality: '',
+      phone: '',
+      email: '',
+      webUrl:'',
+      need:''
     })
   }
 
