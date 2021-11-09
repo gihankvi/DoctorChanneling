@@ -33,6 +33,58 @@ export const MENU: MenuItem[] = [
       {
         subMenuItems: [
           {
+            label: 'Doctor',
+            isTitle: true,
+          },
+          {
+            label: 'allDoctor',
+            link: '/apps/doctor/all-doctor'
+          },
+          {
+            label: 'addDoctor',
+            link: '/apps/doctor/add-doctor'
+          },
+          {
+            label: 'doctorProfile',
+            link: '/apps/doctor/doctor-profile'
+          },
+          {
+            label: 'doctorSchedule',
+            link: '/apps/doctor/doctor-schedule'
+          },
+        ]
+      },
+
+      {
+        subMenuItems: [
+          {
+            label: 'Patients',
+            isTitle: true,
+          },
+          {
+            label: 'allPatients',
+            link: '/apps/patients/all-patients'
+          },
+          {
+            label: 'addPatients',
+            link: '/apps/patients/add-patients'
+          },
+          {
+            label: 'patientsProfile',
+            link: '/apps/patients/profile-patient'
+          },
+          {
+            label: 'invoice',
+            link: '/apps/patients/invoice'
+          },
+        ]
+      },
+
+
+
+      {
+        subMenuItems: [
+          {
             label: 'Other',
             isTitle: true,
           },

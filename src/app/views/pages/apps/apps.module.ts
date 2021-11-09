@@ -25,6 +25,19 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
+import { DoctorComponent } from './doctor/doctor.component';
+import { AllDoctorComponent } from './doctor/all-doctor/all-doctor.component';
+import { AddDoctorComponent } from './doctor/add-doctor/add-doctor.component';
+import { DoctorProfileComponent } from './doctor/doctor-profile/doctor-profile.component';
+import { DoctorScheduleComponent } from './doctor/doctor-schedule/doctor-schedule.component';
+import { PatientsComponent } from './patients/patients.component';
+import { AllPatientsComponent } from './patients/all-patients/all-patients.component';
+import { AddPatientsComponent } from './patients/add-patients/add-patients.component';
+import { ProfilePatientComponent } from './patients/profile-patient/profile-patient.component';
+import { InvoiceComponent } from './patients/invoice/invoice.component';
+
+
+
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
@@ -46,6 +59,67 @@ const routes: Routes = [
         redirectTo: 'calendar',
         pathMatch: 'full',
       },
+
+      {
+        path: 'doctor',
+        component: DoctorComponent,
+        children: [
+          {
+            path: '',
+            redirectTo: 'alldoctor',
+            pathMatch: 'full'
+          },
+          {
+            path: 'alldoctor',
+            component: AllDoctorComponent
+          },
+          {
+            path: 'adddoctor',
+            component: AddDoctorComponent
+          },
+          {
+            path: 'doctorprofile',
+            component: DoctorProfileComponent
+          },
+          {
+            path: 'doctorschedule',
+            component: DoctorScheduleComponent
+          }
+          
+        ]
+      },
+
+
+       
+      {
+        path: 'patients',
+        component: PatientsComponent,
+        children: [
+          {
+            path: '',
+            redirectTo: 'allpatients',
+            pathMatch: 'full'
+          },
+          {
+            path: 'allpatients',
+            component: AllPatientsComponent
+          },
+          {
+            path: 'addpatients',
+            component: AddPatientsComponent
+          },
+          {
+            path: 'patientsprofile',
+            component: ProfilePatientComponent
+          },
+          {
+            path: 'invoice',
+            component: InvoiceComponent
+          }
+          
+        ]
+      },
+
       {
         path: 'email',
         component: EmailComponent,
@@ -69,6 +143,12 @@ const routes: Routes = [
           }
         ]
       },
+
+     
+
+
+
+
       {
         path: 'chat',
         component: ChatComponent
@@ -82,7 +162,7 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  declarations: [EmailComponent, ChatComponent, CalendarComponent, AppsComponent, InboxComponent, ReadComponent, ComposeComponent],
+  declarations: [EmailComponent, ChatComponent, CalendarComponent, AppsComponent, InboxComponent, ReadComponent, ComposeComponent,   AllDoctorComponent ,DoctorComponent, AddDoctorComponent, DoctorProfileComponent, DoctorScheduleComponent, PatientsComponent, AllPatientsComponent, AddPatientsComponent, ProfilePatientComponent, InvoiceComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
