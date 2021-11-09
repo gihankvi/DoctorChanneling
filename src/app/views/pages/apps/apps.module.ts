@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { FullCalendarModule } from '@fullcalendar/angular'; // for FullCalendar!
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -12,6 +12,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { NgbDropdownModule, NgbTooltipModule, NgbNavModule, NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { SimplemdeModule, SIMPLEMDE_CONFIG } from 'ng2-simplemde'
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppsComponent } from './apps.component';
 import { CalendarComponent } from './calendar/calendar.component';
@@ -35,6 +36,7 @@ import { AllPatientsComponent } from './patients/all-patients/all-patients.compo
 import { AddPatientsComponent } from './patients/add-patients/add-patients.component';
 import { ProfilePatientComponent } from './patients/profile-patient/profile-patient.component';
 import { InvoiceComponent } from './patients/invoice/invoice.component';
+import { ApiService } from './patients/service/api.service';
 
 
 
@@ -174,15 +176,18 @@ const routes: Routes = [
     NgbNavModule,
     NgbCollapseModule,
     NgSelectModule,
+    HttpClientModule,
+    ReactiveFormsModule,
     SimplemdeModule.forRoot({
       provide: SIMPLEMDE_CONFIG,
       useValue: {}
     })
   ],
-  providers: [
+  providers: [ApiService,
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+
     }
   ]
 })

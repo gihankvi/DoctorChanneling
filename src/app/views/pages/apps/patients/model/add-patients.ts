@@ -1,0 +1,13 @@
+export interface AddPatients {
+       firstName: string;
+       lastName: string;
+       date: string;
+       time: string;
+       address: string;
+       age: number;
+       gender: string;
+       email: string;
+       contactNumber: number;
+       description: string;
+       image: string;
+}

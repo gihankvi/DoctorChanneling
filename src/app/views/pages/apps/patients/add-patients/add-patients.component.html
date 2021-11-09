@@ -3,14 +3,17 @@
     <div class="card">
       <div class="card-body">
         <h6 class="card-title">Add Patients Details</h6>
-          <form>
+
+          <form [formGroup]="patientForm" (ngSubmit)="onSubmit()" >
             <div class="row">
+
               <div class="col-sm-6">
                 <div class="form-group">
                   <label class="control-label">Date</label>
                   <input type="date" class="form-control" placeholder="Enter Date">
                 </div>
               </div><!-- Col -->
+
               <div class="col-sm-6">
                 <div class="form-group">
                   <label class="control-label">Time</label>
@@ -18,20 +21,23 @@
                 </div>
               </div><!-- Col -->
             </div><!-- Row -->
+
             <div class="row">
               <div class="col-sm-6">
                 <div class="form-group">
                   <label class="control-label">First Name</label>
-                  <input type="text" class="form-control" placeholder="Enter first name">
+                  <input type="text" class="form-control" placeholder="Enter first name" formControlName="firstName">
                 </div>
               </div><!-- Col -->
+
               <div class="col-sm-6">
                 <div class="form-group">
                   <label class="control-label">Last Name</label>
-                  <input type="text" class="form-control" placeholder="Enter last name">
+                  <input type="text" class="form-control" placeholder="Enter last name" formControlName="lastName">
                 </div>
               </div><!-- Col -->
             </div><!-- Row -->
+
             <div class="row">
               <div class="col-sm-4">
                 <div class="form-group">
@@ -39,12 +45,14 @@
                   <input type="text" class="form-control" placeholder="Enter address">
                 </div>
               </div><!-- Col -->
+
               <div class="col-sm-4">
                 <div class="form-group">
                   <label class="control-label">Age</label>
                   <input type="number" class="form-control" placeholder="Enter age">
                 </div>
               </div><!-- Col -->
+
               <div class="col-sm-4">
                 <div class="form-group">
                     <label>Gender</label>
@@ -52,11 +60,11 @@
                       <option selected>Select the Gender</option>
                       <option value="1">Male</option>
                       <option value="2">Female</option>
-                      
                     </select>
                 </div>
               </div><!-- Col -->
             </div><!-- Row -->
+
             <div class="row">
               <div class="col-sm-6">
                 <div class="form-group">
@@ -64,6 +72,7 @@
                   <input type="email" class="form-control" placeholder="Enter email">
                 </div>
               </div><!-- Col -->
+
               <div class="col-sm-6">
                 <div class="form-group">
                   <label class="control-label">Phone Number</label>
@@ -71,8 +80,9 @@
                 </div>
               </div><!-- Col -->
             </div><!-- Row -->
+
           </form>
-          <button type="button" class="btn btn-primary submit">Submit form</button>
+          <button type="Submit" value="Submit" class="btn btn-primary submit">Submit form</button>
       </div>
     </div>
   </div>
