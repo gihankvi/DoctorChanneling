@@ -15,16 +15,39 @@
             <table id="dataTableExample" class="table">
               <thead>
                 <tr>
+                  <th>Id</th>
                   <th>Date</th>
                   <th>Time</th>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Address</th>
-                  <th>Age</th>
-                  <th>Gender</th>
-                  <th>Email Address</th>
+                  <th>Name</th>
                   <th>Phone Number</th>
+                  <th>Action</th>
                 </tr>
+
+                <tr *ngFor="let patient of Patient; let i = index">
+                  <td scope="row">{{patient._id}}</td>
+                  <td>{{patient.date}}</td>
+                  <td>{{patient.time}}</td>
+                  <td>{{patient.firstName}} {{patient.lastName}} </td>
+                  <td>{{patient.contactNumber}}</td>
+                  <td>                    
+                    <!-- view -->
+                    <span style="padding-right: 15px;">
+                      <i class="fa fa-eye" aria-hidden="true" style="cursor: pointer;"></i>
+                    </span>
+                    <!-- edit -->
+                    <span style="padding-right: 15px;">
+                      <i class="fa fa-pencil" aria-hidden="true" style="cursor: pointer;"></i>
+                    </span>
+                    <!-- delete -->
+                    <span style="padding-right: 15px;">
+                      <i class="fa fa-trash" aria-hidden="true" style="cursor: pointer;"></i>
+                    </span>
+                  </td>
+                  
+                  <td></td>
+                  
+                </tr>
+                
               </thead>
               <tbody>
                 

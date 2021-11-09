@@ -1,8 +1,8 @@
 import { Component, NgZone, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
-import { ApiService } from '../service/api.service';
+import { PatientService } from '../service/patient.service';
+
 @Component({
   selector: 'app-add-patients',
   templateUrl: './add-patients.component.html',
@@ -11,42 +11,50 @@ import { ApiService } from '../service/api.service';
 export class AddPatientsComponent implements OnInit {
 
   submitted = false;
-  patientForm: FormGroup;
+  patientForm!: FormGroup;
 
   constructor(
-    public fb: FormBuilder,
+    public fb: FormBuilder, 
     private router: Router,
     private ngZone: NgZone,
-    private apiService: ApiService
-  ) { 
-
+    private patientService: PatientService
+  ) {
     this.mainForm();
-  }
+   }
 
+   mainForm(){
+    this.patientForm = this.fb.group({
+      firstName:['', [Validators.required]],
+      lastName:['', [Validators.required, ]],
+      date:[''],
+      time:[''],
+      address:[''],
+      age:[''],
+      gender:[''],
+      email:[''],
+      contactNumber:['']
+
+    })     
+  }
   ngOnInit(): void {
   }
-  mainForm() {
-    this.patientForm = this.fb.group({
 
-      firstName: ['', [Validators.required]],
-      lastName: ['', [Validators.required]],
-    })
-  }
-
-  selectedDate: NgbDateStruct;
-
-  onSubmit() {
+  onSubmit():any{
     this.submitted = true;
-    if (!this.patientForm.valid) {
+    if(!this.patientForm.valid){
       return false;
-    } else {
-      this.apiService.createPatient(this.patientForm.value).subscribe(
-        (res) => {
-          console.log('Patient successfully created!')
-          this.ngZone.run(() => this.router.navigateByUrl('/'))
+    }else {
+      this.patientService.createPatient(this.patientForm.value).subscribe(
+        (res) =>{
+          console.log('Patient successfully Created!')
+        this.ngZone.run(() => this.router.navigateByUrl('/all-patients'))
         }, (error) => {
           console.log(error);
-        });
+        }
+      )
     }
   }
+ 
 }
+
+ 
