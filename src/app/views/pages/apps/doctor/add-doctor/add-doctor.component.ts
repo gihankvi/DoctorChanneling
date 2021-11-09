@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Doctor } from '../model-doctor/doctor.model';
+import { DoctorService } from '../service-doctor/doctor.service';
 
 @Component({
   selector: 'app-add-doctor',
@@ -7,8 +11,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddDoctorComponent implements OnInit {
 
-  constructor() { }
+  doctors: Doctor[] | any;
+  
+  constructor(private doctorService: DoctorService,
+              private doctorRouter: Router ) { }
 
+              doctorForm = new FormGroup({
+                firstName: new FormControl(
+                  '',[Validators.required]
+                ),
+                lastName: new FormControl(
+                  '',[Validators.required]
+                )
+    });
+  
+    createDoctor(){
+      this.doctorService.addDoctor(this.doctorForm.value).subscribe(()=>{
+  
+      }, (err) => {
+        console.log(err);
+      });
+  
+      this.doctorForm.reset({
+        firstName: '',
+        lastName: ''
+      })
+    }
+    
   ngOnInit(): void {
   }
 

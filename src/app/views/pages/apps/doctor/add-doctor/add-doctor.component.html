@@ -4,16 +4,16 @@
         <div class="card-body">
           <h6 class="">Basic Information</h6>
           <h6 class="text-black-50">Secription text here...</h6><br>
-            <form>
+            <form [ formGroup ]="doctorForm" (ngSubmit)="createDoctor">
               <div class="row">
                 <div class="col-sm-6">
                   <div class="form-group">      
-                    <input type="text" class="form-control rounded" placeholder="First Name">
+                    <input type="text" class="form-control rounded" placeholder="First Name" formControlName="firstName">
                   </div>
                 </div><!-- Col -->
                 <div class="col-sm-6">
                   <div class="form-group">      
-                    <input type="text" class="form-control rounded" placeholder="Last Name">
+                    <input type="text" class="form-control rounded" placeholder="Last Name" formControlName="lastName">
                   </div>
                 </div><!-- Col -->
               </div><!-- Row -->
