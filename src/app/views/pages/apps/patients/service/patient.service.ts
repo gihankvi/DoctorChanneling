@@ -39,6 +39,23 @@ export class PatientService {
           catchError(this.errorMgmt)
         )
     }
+
+     // Update patient
+  updatePatient(id, data): Observable<any> {
+    let url = `${this.baseUri}/update/${id}`;
+    return this.http.put(url, data, { headers: this.headers }).pipe(
+      catchError(this.errorMgmt)
+    )
+  }
+
+
+    // Delete patient
+  deletePatient(id): Observable<any> {
+    let url = `${this.baseUri}/delete/${id}`;
+    return this.http.delete(url, { headers: this.headers }).pipe(
+      catchError(this.errorMgmt)
+    )
+  }
   
     
   

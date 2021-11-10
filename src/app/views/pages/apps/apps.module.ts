@@ -37,6 +37,7 @@ import { AddPatientsComponent } from './patients/add-patients/add-patients.compo
 import { ProfilePatientComponent } from './patients/profile-patient/profile-patient.component';
 import { InvoiceComponent } from './patients/invoice/invoice.component';
 import { PatientService } from './patients/service/patient.service';
+import { EditPatientComponent } from './patients/edit-patient/edit-patient.component';
 
 
 
@@ -118,6 +119,10 @@ const routes: Routes = [
           {
             path: 'invoice',
             component: InvoiceComponent
+          },
+          {
+            path: 'editpatient',
+            component: EditPatientComponent
           }
           
         ]
@@ -165,7 +170,7 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  declarations: [EmailComponent, ChatComponent, CalendarComponent, AppsComponent, InboxComponent, ReadComponent, ComposeComponent,   AllDoctorComponent ,DoctorComponent, AddDoctorComponent, DoctorProfileComponent, DoctorScheduleComponent, PatientsComponent, AllPatientsComponent, AddPatientsComponent, ProfilePatientComponent, InvoiceComponent],
+  declarations: [EmailComponent, ChatComponent, CalendarComponent, AppsComponent, InboxComponent, ReadComponent, ComposeComponent,   AllDoctorComponent ,DoctorComponent, AddDoctorComponent, DoctorProfileComponent, DoctorScheduleComponent, PatientsComponent, AllPatientsComponent, AddPatientsComponent, ProfilePatientComponent, InvoiceComponent, EditPatientComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

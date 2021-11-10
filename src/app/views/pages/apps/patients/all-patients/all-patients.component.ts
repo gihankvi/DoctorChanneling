@@ -26,4 +26,17 @@ export class AllPatientsComponent implements OnInit {
     })
   }
 
-}
+  removePatient(patient, index) {
+    if(window.confirm('Are you sure?')) {
+        this.patientService.deletePatient(patient._id).subscribe((data) => {
+          this.Patient.splice(index, 1);
+        }
+      )    
+    }
+  }
+  
+  
+  
+  }
+
+

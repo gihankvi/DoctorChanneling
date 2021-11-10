@@ -1,0 +1,90 @@
+<div class="row">
+    <div class="col-md-12 stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h6 class="card-title">Add Patients Details</h6>
+  
+            <form [formGroup]="editpatientForm" (ngSubmit)="onSubmit()" >
+              <div class="row">
+  
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="control-label">Date</label>
+                    <input type="date" class="form-control" placeholder="Enter Date" formControlName="date">
+                  </div>
+                </div><!-- Col -->
+  
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="control-label">Time</label>
+                    <input type="time" class="form-control" placeholder="Enter Time" formControlName="time">
+                  </div>
+                </div><!-- Col -->
+              </div><!-- Row -->
+  
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="control-label">First Name</label>
+                    <input type="text" class="form-control" placeholder="Enter first name" formControlName="firstName">
+                  </div>
+                </div><!-- Col -->
+  
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="control-label">Last Name</label>
+                    <input type="text" class="form-control" placeholder="Enter last name" formControlName="lastName">
+                  </div>
+                </div><!-- Col -->
+              </div><!-- Row -->
+  
+              <div class="row">
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label class="control-label">Address</label>
+                    <input type="text" class="form-control" placeholder="Enter address" formControlName="address" >
+                  </div>
+                </div><!-- Col -->
+  
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label class="control-label">Age</label>
+                    <input type="number" class="form-control" placeholder="Enter age"formControlName="age" >
+                  </div>
+                </div><!-- Col -->
+  
+                <div class="col-sm-4">
+                  <div class="form-group">
+                      <label>Gender</label>
+                      <select class="form-control mb-3" formControlName="gender" >
+                        <option selected>Select the Gender</option>
+                        <option value="1">Male</option>
+                        <option value="2">Female</option>
+                      </select>
+                  </div>
+                </div><!-- Col -->
+              </div><!-- Row -->
+  
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="control-label">Email address</label>
+                    <input type="email" class="form-control" placeholder="Enter email" formControlName="email" >
+                  </div>
+                </div><!-- Col -->
+  
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="control-label">Phone Number</label>
+                    <input type="text" class="form-control" autocomplete="off" placeholder="Enter phonenumber" formControlName="contactNumber">
+                  </div>
+                </div><!-- Col -->
+              </div><!-- Row -->
+             
+              <button type="Submit" value="Submit" class="btn btn-primary submit">Update</button>
+            </form>
+           
+        </div>
+      </div>
+    </div>
+  </div>
