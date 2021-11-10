@@ -16,8 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PatientService } from './views/pages/apps/patients/service/patient.service';
 import { DoctorService } from './views/pages/apps/doctor/service-doctor/doctor.service';
-
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -35,7 +34,7 @@ import { DoctorService } from './views/pages/apps/doctor/service-doctor/doctor.s
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-
+    NgbModule
   ],
   providers: [
 

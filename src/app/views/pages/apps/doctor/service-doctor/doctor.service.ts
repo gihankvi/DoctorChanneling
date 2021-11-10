@@ -26,7 +26,16 @@ export class DoctorService {
     return this.http.get(`${this.baseUri}`)
   }
   
-
+  // get Doctor
+  getDoctor(id:any) {
+    let url = `${this.baseUri}/read/${id}`;
+    return this.http.get(url, {headers: this.headers}).pipe(
+      map((res: any) => {
+        return res || {}
+      }),
+      catchError(this.errorMgmt)
+    )
+  }
 
   // Delete Doctor
   deleteDoctor(id): Observable<any> {
