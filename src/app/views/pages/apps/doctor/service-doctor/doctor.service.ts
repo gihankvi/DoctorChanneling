@@ -21,6 +21,30 @@ export class DoctorService {
         catchError(this.errorMgmt)
       )
   }
+  //get all Doctors :)
+  getDoctors(){
+    return this.http.get(`${this.baseUri}`)
+  }
+  
+  // get Doctor
+  getDoctor(id:any) {
+    let url = `${this.baseUri}/read/${id}`;
+    return this.http.get(url, {headers: this.headers}).pipe(
+      map((res: any) => {
+        return res || {}
+      }),
+      catchError(this.errorMgmt)
+    )
+  }
+
+  // Delete Doctor
+  deleteDoctor(id): Observable<any> {
+    let url = `${this.baseUri}/delete/${id}`;
+    return this.http.delete(url, { headers: this.headers }).pipe(
+      catchError(this.errorMgmt)
+    )
+  }
+
 
   // Error handling 
   errorMgmt(error: HttpErrorResponse) {
