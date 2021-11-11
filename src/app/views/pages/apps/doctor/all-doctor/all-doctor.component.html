@@ -26,10 +26,11 @@
                 <div class="mt-4 apointment"> 
                   <!-- <button class="btn btn-success text-uppercase">Book Appointment</button> -->
                     <!-- view -->
-                      <span style="padding-right: 10px;" (click)="open(Edit_modal)" >
+                      <span style="padding-right: 10px;" (click)="open(View_modal)" (click)="getDoctorValue(doctor._id)">
                         <i class="fa fa-eye" aria-hidden="true" style="cursor: pointer;"></i>
                       </span>
                     <!-- edit -->
+                    <!-- "['wordpress/', {outlets: outletPaths}]" -->
                       <span style="padding-right: 10px;">
                         <i class="fa fa-pencil" aria-hidden="true" style="cursor: pointer;"></i>
                       </span>
@@ -44,7 +45,7 @@
     </div>
   </div>
 
-<ng-template #Edit_modal let-modal>
+<ng-template #View_modal let-modal>
   <div class="row">
     <div class="col-md-12 stretch-card">
       <div class="card">
@@ -55,7 +56,7 @@
                 <span aria-hidden="true">×</span>
           </button>
           <br><br><br>
-            <form>
+            <form [formGroup]="doctorForm">
               <div class="row">
                 <div class="col-sm-6">
                   <div class="form-group">      
@@ -105,19 +106,6 @@
                   </div>
                 </div><!-- Col -->
               </div><!-- Row -->
-
-              <div class="row">
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <input type="text" class="form-control rounded" placeholder="Password">
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <input type="text" class="form-control rounded" placeholder="Confirm Password">
-                  </div>
-                </div>
-              </div>
 
               <div class="form-group">
                 <textarea class="form-control rounded" id="exampleFormControlTextarea1" rows="5" placeholder="please type what you want..." formControlName="need"></textarea>

@@ -27,10 +27,10 @@ export class DoctorService {
   }
   
   // get Doctor
-  getDoctor(id:any) {
+  getDoctor(id): Observable<any> {
     let url = `${this.baseUri}/read/${id}`;
     return this.http.get(url, {headers: this.headers}).pipe(
-      map((res: any) => {
+      map((res: Response) => {
         return res || {}
       }),
       catchError(this.errorMgmt)
@@ -41,6 +41,14 @@ export class DoctorService {
   deleteDoctor(id): Observable<any> {
     let url = `${this.baseUri}/delete/${id}`;
     return this.http.delete(url, { headers: this.headers }).pipe(
+      catchError(this.errorMgmt)
+    )
+  }
+
+  // Update Doctor
+  updateDoctor(id, data): Observable<any> {
+    let url = `${this.baseUri}/update/${id}`;
+    return this.http.put(url, data, { headers: this.headers }).pipe(
       catchError(this.errorMgmt)
     )
   }
