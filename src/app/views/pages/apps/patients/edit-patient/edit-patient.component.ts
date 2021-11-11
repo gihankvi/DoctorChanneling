@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Patient } from '../model/patient';
 import { PatientService } from '../service/patient.service';
@@ -21,7 +22,8 @@ export class EditPatientComponent implements OnInit {
     public fb: FormBuilder,
     private actRoute: ActivatedRoute,
     private patientService: PatientService,
-    private router: Router
+    private router: Router,
+    @Inject(MAT_DIALOG_DATA) public id: string
   ) {}
 
   ngOnInit() {
@@ -79,23 +81,40 @@ export class EditPatientComponent implements OnInit {
     })
   }
 
-  onSubmit() {
+  // onSubmit() {
+  //   this.submitted = true;
+  //   if (!this.editpatientForm.valid) {
+  //     return false;
+  //   } else {
+  //     if (window.confirm('Are you sure?')) {
+  //       let id = this.actRoute.snapshot.paramMap.get('id');
+  //       this.patientService.updatePatient(id, this.editpatientForm.value)
+  //         .subscribe(res => {
+  //           this.router.navigateByUrl('/edit-patient');
+  //           console.log('Content updated successfully!')
+  //         }, (error) => {
+  //           console.log(error)
+  //         })
+  //     }
+  //   }
+  // }
+
+   onSubmit():any {
     this.submitted = true;
-    if (!this.editpatientForm.valid) {
+    if(!this.editpatientForm.valid){
       return false;
     } else {
       if (window.confirm('Are you sure?')) {
-        let id = this.actRoute.snapshot.paramMap.get('id');
-        this.patientService.updatePatient(id, this.editpatientForm.value)
-          .subscribe(res => {
-            this.router.navigateByUrl('/edit-patient');
-            console.log('Content updated successfully!')
-          }, (error) => {
-            console.log(error)
-          })
+        this.patientService.updatePatient(this.id, this.editpatientForm.value).subscribe(res => {
+          window.location.reload();
+          console.log('Content updated successfully')
+        }, (error) => {
+          console.log(error)
+        })
       }
     }
   }
+
 
 }
 

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { DataTable } from "simple-datatables";
+import { EditPatientComponent } from '../edit-patient/edit-patient.component';
+import { ProfilePatientComponent } from '../profile-patient/profile-patient.component';
 import { PatientService } from '../service/patient.service';
 @Component({
   selector: 'app-all-patients',
@@ -11,7 +14,8 @@ export class AllPatientsComponent implements OnInit {
   
 
   Patient:any = [];
-  constructor(private patientService: PatientService) { 
+
+  constructor(private patientService: PatientService,private dialogRef: MatDialog,) { 
     this.readPatient();
   }
 
@@ -35,6 +39,13 @@ export class AllPatientsComponent implements OnInit {
     }
   }
   
+  editPatient(id:String):any{
+    this.dialogRef.open(EditPatientComponent,{width:'700px', data:id});
+  }
+
+  viewPatient(id:String):any{
+    this.dialogRef.open(ProfilePatientComponent,{width:'700px', data:id});
+  } 
   
   
   }

@@ -1,90 +1,82 @@
-<div class="row">
-    <div class="col-md-12 stretch-card">
-      <div class="card">
-        <div class="card-body">
-          <h6 class="card-title">Add Patients Details</h6>
-  
-            <form [formGroup]="patientForm" (ngSubmit)="onSubmit()" >
-              <div class="row">
-  
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <label class="control-label">Date</label>
-                   
-                  </div>
-                </div><!-- Col -->
-  
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <label class="control-label">Time</label>
-                   
-                  </div>
-                </div><!-- Col -->
-              </div><!-- Row -->
-  
-              <div class="row">
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <label class="control-label">First Name</label>
-                   
-                    
-                  </div>
-                </div><!-- Col -->
-  
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <label class="control-label">Last Name</label>
-                    
-                    
-                  </div>
-                </div><!-- Col -->
-              </div><!-- Row -->
-  
-              <div class="row">
-                <div class="col-sm-4">
-                  <div class="form-group">
-                    <label class="control-label">Address</label>
-                    
-                    
-                  </div>
-                </div><!-- Col -->
-  
-                <div class="col-sm-4">
-                  <div class="form-group">
-                    <label class="control-label">Age</label>
-                    
-                    
-                  </div>
-                </div><!-- Col -->
-  
-                <div class="col-sm-4">
-                  <div class="form-group">
-                      <label>Gender</label>
-                      
-                  </div>
-                </div><!-- Col -->
-              </div><!-- Row -->
-  
-              <div class="row">
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <label class="control-label">Email address</label>
-                    
-                  </div>
-                </div><!-- Col -->
-  
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <label class="control-label">Phone Number</label>
-                    
-                  </div>
-                </div><!-- Col -->
-              </div><!-- Row -->
-             
-            
-            </form>
+<div class="container">
+  <i mat-button mat-dialog-close class="fa fa-times" aria-hidden="true" style="float: right;"></i>
+    <h3>View Customer</h3>
+    <hr>
+    <form [formGroup]="viewprofileForm" (ngSubmit)="onSubmit()" >
+      <div class="row">
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label class="control-label">Date</label>
            
-        </div>
-      </div>
-    </div>
-  </div>
+          </div>
+        </div><!-- Col -->
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label class="control-label">Time</label>
+           
+          </div>
+        </div><!-- Col -->
+      </div><!-- Row -->
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label class="control-label">First Name</label>
+           
+            
+          </div>
+        </div><!-- Col -->
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label class="control-label">Last Name</label>
+            
+            
+          </div>
+        </div><!-- Col -->
+      </div><!-- Row -->
+
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label class="control-label">Address</label>
+            
+            
+          </div>
+        </div><!-- Col -->
+
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label class="control-label">Age</label>
+            
+            
+          </div>
+        </div><!-- Col -->
+
+        <div class="col-sm-4">
+          <div class="form-group">
+              <label>Gender</label>
+              
+          </div>
+        </div><!-- Col -->
+      </div><!-- Row -->
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label class="control-label">Email address</label>
+            
+          </div>
+        </div><!-- Col -->
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label class="control-label">Phone Number</label>
+            
+          </div>
+        </div><!-- Col -->
+      </div><!-- Row -->
+    </form>
+</div>

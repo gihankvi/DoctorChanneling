@@ -22,6 +22,7 @@ export class AddPatientsComponent implements OnInit {
     this.mainForm();
    }
 
+   // main form
    mainForm(){
     this.patientForm = this.fb.group({
       firstName:['', [Validators.required]],
@@ -32,7 +33,8 @@ export class AddPatientsComponent implements OnInit {
       age:[''],
       gender:[''],
       email:[''],
-      contactNumber:['']
+      contactNumber:[''],
+      description:['']
 
     })     
   }

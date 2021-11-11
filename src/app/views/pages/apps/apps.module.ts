@@ -37,6 +37,7 @@ import { AddPatientsComponent } from './patients/add-patients/add-patients.compo
 import { ProfilePatientComponent } from './patients/profile-patient/profile-patient.component';
 import { InvoiceComponent } from './patients/invoice/invoice.component';
 import { PatientService } from './patients/service/patient.service';
+import {MatDialogModule} from '@angular/material/dialog'; 
 
 
 
@@ -181,6 +182,7 @@ const routes: Routes = [
     NgSelectModule,
     HttpClientModule,
     ReactiveFormsModule,
+    MatDialogModule,
     SimplemdeModule.forRoot({
       provide: SIMPLEMDE_CONFIG,
       useValue: {}

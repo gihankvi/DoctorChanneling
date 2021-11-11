@@ -58,8 +58,8 @@
                     <label>Gender</label>
                     <select class="form-control mb-3" formControlName="gender" >
                       <option selected>Select the Gender</option>
-                      <option value="1">Male</option>
-                      <option value="2">Female</option>
+                      <option value="male">Male</option>
+                      <option value="Female">Female</option>
                     </select>
                 </div>
               </div><!-- Col -->
@@ -80,6 +80,22 @@
                 </div>
               </div><!-- Col -->
             </div><!-- Row -->
+            
+            <!-- image upload -->
+            <div class="form-group">
+              <input (change)="handleFileInput($event)" type="file" name="img[]" class="file-upload-default" id="fileUploadInputExample">
+              <div class="input-group col-xs-12" (click)="openFileBrowser($event)">
+                <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
+                <span class="input-group-append">
+                  <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                </span>
+              </div>
+            </div>
+
+            <!-- text area -->
+            <div class="form-group">
+              <textarea class="form-control rounded" id="exampleFormControlTextarea1" rows="5" placeholder="please type what you want..." formControlName="description"></textarea>
+            </div>  
            
            
             <button type="Submit" value="Submit" class="btn btn-primary submit">Submit form</button>
