@@ -39,7 +39,7 @@ export class AddDoctorComponent implements OnInit {
       phone:['', [Validators.required]],
       email:['', [Validators.required]],
       webUrl:['', [Validators.required]],
-      need:['', [Validators.required]],
+      address:['', [Validators.required]],
     })
   }
 
@@ -67,7 +67,7 @@ export class AddDoctorComponent implements OnInit {
       phone: '',
       email: '',
       webUrl:'',
-      need:''
+      address:''
     })
   }
 

@@ -30,7 +30,7 @@ let Doctor = new Schema({
      image: {
         type: String
      },
-     need: {
+     address: {
         type: String
      }
 }, {

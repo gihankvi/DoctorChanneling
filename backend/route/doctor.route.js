@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const doctorRoute = express.Router();
-
 //Doctor model
 let Doctor = require ('../models/Doctor')
 
@@ -54,8 +53,8 @@ doctorRoute.route('/create').post((req, res, next) => {
     })
   
   //delete Doctor
-  doctorRoute.route('/delete/:id').delete((req, res, next) => {
-      Doctor.findOneAndRemove(req.params.id, (error, data) => {
+  doctorRoute.route('/delete/:id').delete((req, res, next) => {  
+      Doctor.findByIdAndRemove(req.params.id, (error, data) => {
           if(error) {
               return next(error);
           } else {
@@ -65,6 +64,6 @@ doctorRoute.route('/create').post((req, res, next) => {
           }
       })
   })
-  
+
   module.exports = doctorRoute;
   

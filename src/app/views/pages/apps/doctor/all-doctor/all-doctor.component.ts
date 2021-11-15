@@ -6,18 +6,17 @@ import { DoctorService } from '../service-doctor/doctor.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { Doctor } from '../model-doctor/doctor.model';
 
+import { DataTable } from "simple-datatables";
+
 @Component({
   selector: 'app-all-doctor',
   templateUrl: './all-doctor.component.html',
   styleUrls: ['./all-doctor.component.scss']
 })
 export class AllDoctorComponent implements OnInit {
-// Employee:any = [];
-//users: User[] | any;
+
   Doctor:any = [];
   submitted = false;
-
-  //doctor: Doctor[] | any;
 
   doctorForm: FormGroup;
 
@@ -27,7 +26,7 @@ export class AllDoctorComponent implements OnInit {
               private router: Router,
               private ngZone: NgZone,) { 
     this.mainForm();
-    this.readDoctor();
+    this.ngOnInit();
   }
 
   
@@ -42,28 +41,32 @@ export class AllDoctorComponent implements OnInit {
       phone:['', [Validators.required]],
       email:['', [Validators.required]],
       webUrl:['', [Validators.required]],
-      need:['', [Validators.required]],
+      address:['', [Validators.required]],
     })
   }
 
   selectedDate: NgbDateStruct;
 
   ngOnInit(): void {
-  }
+    //const dataTable = new DataTable("#dataTableExample");
+      this.doctorService.getDoctors().subscribe((data) => {
+       this.Doctor = data;
+      })    
 
-  readDoctor(){
-    this.doctorService.getDoctors().subscribe((data) => {
-     this.Doctor = data;
-    })    
   }
-
-  removeDoctor(doctor:any, index:any) {
-    if(window.confirm('Are you sure?')) {
-        this.doctorService.deleteDoctor(doctor._id).subscribe((data) => {
-          this.Doctor.splice(index, 1);
-        }
-      )    
-    }
+//--------------------------Doctor Delete----------------------------------------------
+  removeDoctor(id: any){
+    if(confirm('Do want to delete this Doctor?')){
+ 
+     this.doctorService.deleteDoctor(id).subscribe(
+       (res) => {
+         console.log('Deleted Successfully');
+         this.ngOnInit();
+         },
+         (err)=>{
+          console.log(err);
+         }
+     )}
   }
 //-------------------------Doctor view popup---------------------------------------------
   open(content:any) {
@@ -74,7 +77,7 @@ export class AllDoctorComponent implements OnInit {
     });
   }
 
-//-------------------------Doctor update values-------------------------------------------
+//-------------------------Doctor view values-------------------------------------------
 getDoctorValue(id: any):any {
   this.doctorService.getDoctor(id).subscribe((data: Doctor[] | any) => {
     this.doctorForm.setValue({
@@ -86,7 +89,7 @@ getDoctorValue(id: any):any {
       phone: data['phone'],
       email: data['email'],
       webUrl: data['webUrl'],
-      need: data['need'],
+      address: data['address'],
     });
   });
   this.doctorForm.reset({
@@ -98,7 +101,9 @@ getDoctorValue(id: any):any {
     phone: '',
     email: '',
     webUrl: '',
-    need: ''
+    address: ''
   });
 } 
+
+
 }

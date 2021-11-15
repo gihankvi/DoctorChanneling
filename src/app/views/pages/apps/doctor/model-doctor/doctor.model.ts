@@ -9,5 +9,5 @@ export interface Doctor{
     email: String;
     webUrl: String;
     image: String;
-    need: String;
+    address: String;
 }

@@ -55,7 +55,7 @@ patientRoute.route('/create').post((req, res, next) => {
   
   //delete Patient
   patientRoute.route('/delete/:id').delete((req, res, next) => {
-    Patient.findOneAndRemove(req.params.id, (error, data) => {
+    Patient.findByIdAndRemove(req.params.id, (error, data) => {
           if(error) {
               return next(error);
           } else {
