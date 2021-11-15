@@ -53,7 +53,7 @@ export class AddDoctorComponent implements OnInit {
       this.doctorService.createDoctor(this.doctorForm.value).subscribe(
         (res) => {
           console.log('Doctor successfully created!')
-          this.ngZone.run(() => this.router.navigateByUrl('/'))
+          this.ngZone.run(() => this.router.navigateByUrl('/apps/doctor/alldoctor'))
         }, (error) => {
           console.log(error);
         });

@@ -49,7 +49,7 @@ export class AddPatientsComponent implements OnInit {
       this.patientService.createPatient(this.patientForm.value).subscribe(
         (res) =>{
           console.log('Patient successfully Created!')
-        this.ngZone.run(() => this.router.navigateByUrl('/all-patients'))
+        this.ngZone.run(() => this.router.navigateByUrl('/apps/patients/allpatients'))
         }, (error) => {
           console.log(error);
         }
