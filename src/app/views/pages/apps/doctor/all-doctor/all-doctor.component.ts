@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators,FormBuilder } from '@angular/forms';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { DoctorService } from '../service-doctor/doctor.service';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Doctor } from '../model-doctor/doctor.model';
 
 import { DataTable } from "simple-datatables";
@@ -18,6 +18,9 @@ export class AllDoctorComponent implements OnInit {
   Doctor:any = [];
   submitted = false;
 
+  response : any = {};
+	responseDelete : any = {};
+
   doctorForm: FormGroup;
 
   constructor(private doctorService: DoctorService,
@@ -26,7 +29,7 @@ export class AllDoctorComponent implements OnInit {
               private router: Router,
               private ngZone: NgZone,) { 
     this.mainForm();
-    this.ngOnInit();
+    this.readDoctors();
   }
 
   
@@ -48,26 +51,31 @@ export class AllDoctorComponent implements OnInit {
   selectedDate: NgbDateStruct;
 
   ngOnInit(): void {
-    //const dataTable = new DataTable("#dataTableExample");
-      this.doctorService.getDoctors().subscribe((data) => {
-       this.Doctor = data;
-      })    
+      const dataTable = new DataTable("#dataTableExample");  
+      //this.readDoctors();
+  }
 
-  }
+  readDoctors(){
+    this.doctorService.getDoctors().subscribe((data) => {
+      this.Doctor = data;
+     })    
+ }
 //--------------------------Doctor Delete----------------------------------------------
-  removeDoctor(id: any){
+
+  removeDoctor(id) {
     if(confirm('Do want to delete this Doctor?')){
- 
-     this.doctorService.deleteDoctor(id).subscribe(
-       (res) => {
-         console.log('Deleted Successfully');
-         this.ngOnInit();
-         },
-         (err)=>{
-          console.log(err);
-         }
-     )}
+      this.doctorService.deleteDoctor(id).subscribe(res => {
+        this.responseDelete = res;
+        if (this.responseDelete.status != 'success'){
+          this.doctorService.alert('Doctor deleted successfully!','success');      
+          this.readDoctors();      
+        } else {
+          this.doctorService.alert('Error deleting Doctor!','error');     
+        }
+      });
+    }
   }
+
 //-------------------------Doctor view popup---------------------------------------------
   open(content:any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
@@ -92,18 +100,20 @@ getDoctorValue(id: any):any {
       address: data['address'],
     });
   });
-  this.doctorForm.reset({
-    firstName: '',
-    lastName: '',
-    dob: '',
-    gender: '',
-    speciality: '',
-    phone: '',
-    email: '',
-    webUrl: '',
-    address: ''
-  });
 } 
 
-
+// -----------------------------------Update Doctor--------------------------------
+// updateUser() {
+//     this.route.params.subscribe(params => {
+//       this.Doctor.updateUser(params['id'], this.doctorForm.value).subscribe(res => {
+//         this.response = res;
+//         if (this.response.status == 'success'){
+//           this.doctorService.alert('User updated successfully!','success');
+//           this.router.navigate(['user']);
+//         } else {
+//           this.doctorService.alert('Error updating user!','error');
+//         }
+//       });
+//     });
+//   }
 }

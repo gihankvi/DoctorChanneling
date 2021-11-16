@@ -18,9 +18,6 @@ import { PatientService } from './views/pages/apps/patients/service/patient.serv
 import { DoctorService } from './views/pages/apps/doctor/service-doctor/doctor.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
