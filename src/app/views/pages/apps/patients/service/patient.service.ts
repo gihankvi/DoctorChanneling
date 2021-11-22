@@ -30,11 +30,11 @@ export class PatientService {
     }
   
     //get patient :)
-    getPatient(id: any): Observable<any> {
+    getPatient(id): Observable<any> {
       let url = `${this.baseUri}/read/${id}`;
         return this.http.get(url, {headers: this.headers}).pipe(
-          map((Response: any) => {
-            return Response || {}
+          map((res: Response) => {
+            return res || {}
           }),
           catchError(this.errorMgmt)
         )
