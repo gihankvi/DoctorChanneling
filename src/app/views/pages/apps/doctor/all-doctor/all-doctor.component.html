@@ -11,7 +11,7 @@
         <div class="card-body">
           <h6 class="card-title">Data Table</h6>
           <div class="table-responsive">
-            <p *ngIf="Doctor.length <= 0" class="no-data text-center">There is no Doctor added yet!</p>
+            
             <table id="dataTableExample" class="table"> 
               <thead>
                 <tr>
@@ -21,13 +21,15 @@
                   <th>DOB</th>
                   <th>Gender</th>
                   <th>speciality</th>
-                  <th>Phone</th>
+                  <!-- <th>Phone</th>
                   <th>Email</th>
                   <th>Web Url</th>
                   <th>Image</th>
-                  <th>Address</th>
+                  <th>Address</th> -->
+                  <th>Action</th>
                 </tr>
-  
+              </thead>                                         
+            
                 <tr *ngFor="let doctor of Doctor">
                   <td scope="row">{{doctor._id}}</td>
                   <td>{{doctor.firstName}}</td>
@@ -35,12 +37,12 @@
                   <td>{{doctor.dob}}</td>
                   <td>{{doctor.gender}}</td>
                   <td>{{doctor.speciality}}</td>
-                  <td>{{doctor.phone}}</td>
+                  <!-- <td>{{doctor.phone}}</td>
                   <td>{{doctor.email}}</td>
                   <td>{{doctor.webUrl}}</td>
-                  <!-- <td>{{doctor.image}}</td> -->
-                  <td>{{doctor.address}}</td>
-                  
+                  <td>{{doctor.image}}</td>
+                  <td>{{doctor.address}}</td> -->
+                               
                   <td>                    
                      <!-- view -->
                      <span style="padding-right: 10px;" (click)="open(View_modal)" (click)="getDoctorValue(doctor._id)">
@@ -55,9 +57,9 @@
                     <span style="padding-right: 10px;" (click)="removeDoctor(doctor._id)">
                       <i class="fa fa-trash" aria-hidden="true" style="cursor: pointer;"></i>
                     </span>
-                  </td>                     
-                </tr>               
-              </thead>           
+                  </td>                                   
+                </tr>
+              
             </table>
           </div>
         </div>
@@ -65,6 +67,10 @@
     </div>
   </div>
 
+
+
+
+  
 <!-- -----------------------------------------pop-up View-------------------------------------------------------- -->
 <ng-template #View_modal let-modal>
   <div class="row">
@@ -161,7 +167,7 @@
               </button> 
             </h4>      
           <br>
-            <form [formGroup]="doctorForm" class="overflow-auto">
+            <form [formGroup]="doctorForm" class="overflow-auto" >
               <div class="row">
                 <div class="col-sm-6">
                   <label>First Name</label>
@@ -225,7 +231,7 @@
               <div class="form-group">
                 <textarea class="form-control rounded" id="exampleFormControlTextarea1" rows="5" formControlName="address"></textarea>
               </div>         
-                  <button type="submit" class="btn btn-primary mr-2">Update</button>
+                  <button type="submit" class="btn btn-primary mr-2"  >Update</button>
                   <button class="btn btn-light" (click)="modal.dismiss('Cross click')">cancel</button>            
               <br><br>
           </form>
@@ -238,4 +244,6 @@
 
 
   
+
+
 

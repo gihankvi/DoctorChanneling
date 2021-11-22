@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Doctor } from '../model-doctor/doctor.model';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -53,6 +54,8 @@ export class DoctorService {
     )
   }
 
+  
+	
 
   // Error handling 
   errorMgmt(error: HttpErrorResponse) {
@@ -67,4 +70,8 @@ export class DoctorService {
     console.log(errorMessage);
     return throwError(errorMessage);
   }
+
+  alert(mssg, status) {
+		Swal.fire(mssg, "", status);
+	}
 }
